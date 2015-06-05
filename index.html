@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//www.googletagservices.com/tag/js/gpt.js"></script>
+    <script src="libs/core.min.js"></script>
+    <style>
+        body *{overflow:hidden !important}
+    </style>
+    <script>
+        $(function () {
+            var harm = Harmony({
+                forceLog: true
+            });
+            harm.defineSlot({
+                name: 'OOP01',
+                id: 'div-gpt-ad',
+                interstitial: true,
+                adunit: '11347122/dev-test',
+                breakpoint: 'oop',
+                mapping: [
+                    [[600, 0], []]
+                ]
+            });
+            googletag.pubads().setCentering(true);
+            googletag.enableServices();
+            harm.show.breakpoint('oop');
+            var big = $(window).width() > 600;
+            $(window).resize(function () {
+                var curr = $(window).width();
+                if (big && curr < 600) {
+                    big = false;
+                    googletag.pubads().refresh([
+                        harm.slot('OOP01')
+                    ]);
+                } else if (!big && curr > 600) {
+                    big = true;
+                    try {
+                        Shadowbox.close();
+                    } catch (err) {}
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    Page content.
+    <div id="div-gpt-ad" class="ad"></div>
+</body>
+</html>
